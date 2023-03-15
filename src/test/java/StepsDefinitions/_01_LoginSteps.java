@@ -1,37 +1,46 @@
 package StepsDefinitions;
-import Pages._01_LoginPageElements;
-import Pages._02_HomePageElements;
-import Utilities.BaseDriver;
-import io.cucumber.java.en.Given;
+
+import Utilities.Driver_Base;
+import Utilities.ParentMethods;
+import Pages._03_LoginPageElements;
+import Pages._04_HomePageElements;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
 public class _01_LoginSteps {
-  _01_LoginPageElements lp = new _01_LoginPageElements();
-  _02_HomePageElements hp = new _02_HomePageElements();
-  @Given("User navigate to website")
-  public void userNavigateToWebsite() {
-    BaseDriver.setupDriver().get("http://zero.webappsecurity.com/login.html");
-    BaseDriver.setupDriver().manage().window().maximize();
-  }
+
+  _03_LoginPageElements lp = new _03_LoginPageElements();
+  _04_HomePageElements hp = new _04_HomePageElements();
+
+  ParentMethods methods = new ParentMethods();
+
   @When("User enter valid {string} and {string}")
   public void userEnterValidAnd(String username, String password) {
-    lp.findAndSend("username", username);
-    lp.findAndSend("password", password);
-    lp.findAndClick("sigIn");
-    BaseDriver.setupDriver().navigate().back();
+    lp.login(username, password);
+//    lp.findAndSend("username", username);
+//    lp.findAndSend("password", password);
+//    lp.findAndClick("sigIn");
+    Driver_Base.getDriver().navigate().back();
   }
+
   @Then("User should login successfully")
   public void userShouldLoginSuccessfully() {
-    hp.findAndValidate("loginSuccessMessage", "Zero Bank");
+    methods.validateSuccessMessage();
+
+//    hp.findAndValidate("loginSuccessMessage", "Zero Bank");
   }
-  @When("User enter valid {string} or invalid {string}")
+
+  @When("User enter invalid {string} or invalid {string}")
   public void userEnterValidAndInvalid(String username, String password) {
-    lp.findAndSend("username", username);
-    lp.findAndSend("password", password);
-    lp.findAndClick("sigIn");
+//    lp.findAndSend("username", username);
+//    lp.findAndSend("password", password);
+//    lp.findAndClick("sigIn");
+    lp.login(username, password);
   }
+
   @Then("User should NOT login and receive error message")
   public void userShouldNOTLoginAndReceived() {
-    lp.findAndValidate("errorMessage", "Login and/or password are wrong.");
+//    lp.findAndValidate("errorMessage", "Login and/or password are wrong.");
+    methods.validateErrorMessage();
   }
 }

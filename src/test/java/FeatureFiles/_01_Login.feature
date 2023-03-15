@@ -1,7 +1,6 @@
 Feature: Login Functionality
 
   Scenario Outline: Login with valid username and password as positive test
-    Given User navigate to website
     When User enter valid "<username>" and "<password>"
     Then User should login successfully
 
@@ -10,8 +9,7 @@ Feature: Login Functionality
       | username | password |
 
   Scenario Outline: Login with invalid username or password as negative test
-    Given User navigate to website
-    When User enter valid "<username>" or invalid "<password>"
+    When User enter invalid "<username>" or invalid "<password>"
     Then User should NOT login and receive error message
 
     Examples:
