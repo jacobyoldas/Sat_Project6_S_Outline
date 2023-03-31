@@ -1,0 +1,13 @@
+<suite name="Suit 1"  parallel="tests" thread-count="1">
+
+  <test name="Test 1">
+    <classes>
+      <class name="Runners._02_TestRunnerRegression"></class>
+    </classes>
+  </test>
+  <test name="Test 2">
+    <classes>
+      <class name="Runners._03_TestRunnerSmokeTest"></class>
+    </classes>
+  </test>
+</suite>

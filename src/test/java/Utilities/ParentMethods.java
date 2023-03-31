@@ -13,6 +13,15 @@ public class ParentMethods extends BaseMethods {
   }
 }
 
+//  _01_LoginPageElements lp = new _01_LoginPageElements();
+//
+//  public void login(String username, String password) {
+//
+//    sendKeys(lp.getUsernameInput(),username);
+//    sendKeys(lp.getPasswordInput(),password);
+//    click(signInButton);
+//  }
+
 
 
 

@@ -18,11 +18,23 @@ public class _03_LoginPageElements extends BaseMethods {
   private static final By passWord = By.cssSelector("input[name='user_password']");
   public static final By sigIn = By.cssSelector("input[name='submit']");
 
+//  public By getUsernameInput() {  return usernameInput; }
+//  public By getPasswordInput() {   return passwordInput; }
+
   public void login(String username, String password) {
     sendKeys(userName,username);
     sendKeys(passWord,password);
     click(sigIn);
   }
+
+  public void loginNoParam(){
+    sendKeys(userName,"username");
+    sendKeys(passWord,"password");
+    click(sigIn);
+    Driver_Base.getDriver().navigate().back();
+
+  }
+
 
 }
 
